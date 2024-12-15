@@ -5,7 +5,6 @@ import swaggerUi from "swagger-ui-express";
 
 import "./config/logging";
 import { DEVELOPMENT, mongo, server } from "./config/config";
-import routes from "./routes/routes";
 
 import "reflect-metadata";
 
@@ -13,6 +12,7 @@ import { corsHandler } from "./middleware/corsHandler";
 import { loggingHandler } from "./middleware/loggingHandler";
 import { routeNotFound } from "./middleware/errorNotFound";
 import { specs } from "./config/swagger";
+import likeandcommentRoutes from "./routes/likeandcommentRoutes";
 
 export const application = express();
 export let httpServer: ReturnType<typeof http.createServer>;
@@ -65,7 +65,7 @@ export const Main = async () => {
   logging.log("----------------------------------------");
   logging.log("Define Controller Routing");
   logging.log("----------------------------------------");
-  application.use(routes);
+  application.use(likeandcommentRoutes)
 
   logging.log("----------------------------------------");
   logging.log("Define Routing Error");
